@@ -6,7 +6,7 @@ class MemosController < ApplicationController
 
   def create
     Memo.create!( content: params[:text] )
-    render nothing: true, status: :ok, plain: "φ(.. )ﾒﾓｼﾃｵｺｳ" and return
+    render nothing: true, status: :ok, text: "φ(.. )ﾒﾓｼﾃｵｺ"
   end
 
   private
