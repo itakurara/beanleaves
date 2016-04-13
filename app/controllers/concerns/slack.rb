@@ -1,3 +1,3 @@
 module Slack
-	TOKEN = ENV.fetch('SLACK_TOKEN')
+  TOKEN = ENV.fetch('SLACK_TOKEN')
 end
