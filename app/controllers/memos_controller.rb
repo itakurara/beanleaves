@@ -5,8 +5,8 @@ class MemosController < ApplicationController
   before_filter :verify_slack_token
 
   def create
-    @name = params[:user_name]
-    render "home/index"
+    Memo.create!( content: params[:text] )
+    render nothing: true, status: :ok and return
   end
 
   private

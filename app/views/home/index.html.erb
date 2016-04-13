@@ -1,2 +1,4 @@
 beanleaves
-<%= @name %>
+<% @memos.each do |memo| %>
+  <p><%= memo.content %></p>
+<% end %>
