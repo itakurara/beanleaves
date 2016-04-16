@@ -22,10 +22,13 @@ var MemoBox = React.createClass({
 });
 var MemoList = React.createClass({
   render: function(){
-    var memoNodes = this.props.data.map(function(memo){
+    var colors = ['yellow', 'blue', 'pink', 'green'];
+    var memoNodes = this.props.data.map(function(memo, i){
+      var bgColor = colors[i%4];
+      var classString = 'view view--' + bgColor;
       return (
-          <MemoView text={memo.content} />
-      );
+        <MemoView text={memo.content} classString={classString} />
+        );
     });
     return (
       <div className="memoList" >
@@ -37,8 +40,8 @@ var MemoList = React.createClass({
 var MemoView = React.createClass({
   render: function(){
     return (
-      <div className="view view--yellow" >
         <MemoText text={this.props.text} />
+      <div className={this.props.classString} >
         <MemoForm text={this.props.text} />
       </div>
     );
