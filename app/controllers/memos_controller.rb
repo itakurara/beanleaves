@@ -1,8 +1,14 @@
 class MemosController < ApplicationController
-  include Slack
+  # これあとでコメントアウト消すこと！
+  #include Slack
 
   skip_before_filter :verify_authenticity_token
-  before_filter :verify_slack_token
+  before_filter :verify_slack_token, except: [:index]
+
+  def index
+    @memos = Memo.all
+    render json: @memos
+  end
 
   def create
     Memo.create!( content: params[:text] )

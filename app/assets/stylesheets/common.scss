@@ -1,14 +1,14 @@
 body{
   background: image-url("bg.jpg");
 }
-.memo{
+.view{
   width:40%;
   // あとでmax-width設定しよ
   margin: 40px auto;
   padding:30px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 }
-.memo--yellow{
+.view--yellow{
   background: #F7E999;
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
@@ -16,7 +16,7 @@ body{
   -ms-transform: rotate(2deg);
   transform: rotate(2deg);
 }
-.memo--blue{
+.view--blue{
   background: #F7E999;
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
@@ -24,7 +24,7 @@ body{
   -ms-transform: rotate(2deg);
   transform: rotate(2deg);
 }
-.memo--pink {
+.view--pink {
   background: #FFBDA3;
   -webkit-transform: rotate(1deg);
   -moz-transform: rotate(1deg);
@@ -32,11 +32,27 @@ body{
   -ms-transform: rotate(1deg);
   transform: rotate(1deg);
 }
-.memo--green {
+.view--green {
   background: #CAF4B9;
   -webkit-transform: rotate(-1deg);
   -moz-transform: rotate(-1deg);
   -o-transform: rotate(-1deg);
   -ms-transform: rotate(-1deg);
   transform: rotate(-1deg);
+}
+.view{
+  p{
+    display:block;
+  }
+  input{
+    display:none;
+  }
+}
+.view.edit{
+  p{
+    display: none;
+  }
+  input{
+    display:block;
+  }
 }
