@@ -38,26 +38,36 @@ var MemoList = React.createClass({
   }
 });
 var MemoView = React.createClass({
+  handleStateChange: function(){
+    // TODO
+  },
   render: function(){
     return (
-        <MemoText text={this.props.text} />
       <div className={this.props.classString} >
+        <MemoText text={this.props.text} onClickEditBtn={this.handleStateChange} />
         <MemoForm text={this.props.text} />
       </div>
     );
   }
 });
 var MemoText = React.createClass({
+  handleEdit: function(){
+    this.props.onClickEditBtn();
+  },
   render: function(){
     return (
-      <p>{this.props.text}</p>
+      <div className="memoText">
+        <p>{this.props.text}</p>
+        <input type="button" value="編集" className="memoText__btn" onClick={this.handleEdit} />
+        <input type="button" value="削除" className="memoText__btn" onClick={this.handleDelete} />
+      </div>
     );
   }
 });
 var MemoForm = React.createClass({
   render: function(){
     return (
-      <input type ="text" value={this.props.text} />
+      <input type ="text" value={this.props.text} className="memoForm" />
     );
   }
 });

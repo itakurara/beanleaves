@@ -41,18 +41,18 @@ body{
   transform: rotate(-1deg);
 }
 .view{
-  p{
+  .memoText{
     display:block;
   }
-  input{
+  .memoForm{
     display:none;
   }
 }
 .view.edit{
-  p{
+  .memoText{
     display: none;
   }
-  input{
+  .memoForm{
     display:block;
   }
 }
