@@ -1,12 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 body{
   background: image-url("bg.jpg");
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #4b453c;
 }
 .view{
-  width:40%;
+  width:45%;
   // あとでmax-width設定しよ
   margin: 40px auto;
-  padding:30px;
+  padding:30px 30px 15px 30px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 .view--yellow{
   background: #F7E999;
@@ -54,5 +63,39 @@ body{
   }
   .memoForm{
     display:block;
+  }
+}
+%btn{
+  border: none;
+  background: #fff;
+  padding: .5rem;
+  cursor: pointer;
+  width: 70px;
+  font-size: .8rem;
+  margin: 5px;
+  float: right;
+}
+.memoText{
+  overflow: hidden;
+
+  p{
+    padding:.5rem;
+  }
+  &__btn{
+    @extend %btn;
+  }
+}
+.memoForm{
+  overflow: hidden;
+  &__txt{
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: .5rem;
+    font-size: 1rem;
+    border: none;
+  }
+  &__btn{
+    @extend %btn;
   }
 }

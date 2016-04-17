@@ -114,7 +114,7 @@ var MemoForm = React.createClass({
   render: function(){
     return (
       <div className="memoForm">
-        <input type ="text" value={this.state.text} className="memoForm__btn" onChange={this.handleChange} />
+        <input type ="text" value={this.state.text} className="memoForm__txt" onChange={this.handleChange} />
         <input type="button" value="OK!" onClick={this.handleSubmit} className="memoForm__btn" />
       </div>
     );
