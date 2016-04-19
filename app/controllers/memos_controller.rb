@@ -17,8 +17,7 @@ class MemosController < ApplicationController
   def update
     memo = Memo.find(params[:id])
     memo.update(content: params[:text])
-    @memos = Memo.all.order(created_at: :desc)
-    render json: @memos
+    render nothing: true, status: :ok
   end
 
   def destroy
