@@ -8,6 +8,9 @@ body{
   font-family: sans-serif;
   color: #4b453c;
 }
+p{
+  line-height:1.5;
+}
 .view{
   width:45%;
   // あとでmax-width設定しよ
@@ -74,6 +77,7 @@ body{
   font-size: .8rem;
   margin: 5px;
   float: right;
+  line-height: 1.5;
 }
 .memoText{
   overflow: hidden;
@@ -94,6 +98,7 @@ body{
     padding: .5rem;
     font-size: 1rem;
     border: none;
+    line-height: 1.5;
   }
   &__btn{
     @extend %btn;

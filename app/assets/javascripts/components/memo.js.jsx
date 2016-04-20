@@ -103,7 +103,7 @@ var MemoView = React.createClass({
         </div>
         <div className="memoForm">
           <input type ="text" value={this.state.text} className="memoForm__txt" onChange={this.handleChange} />
-          <input type="button" value="OK!" onClick={this.handleUpdate} className="memoForm__btn" />
+          <input type="button" value="OK" onClick={this.handleUpdate} className="memoForm__btn" />
         </div>
       </div>
     );
