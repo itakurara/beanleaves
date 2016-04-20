@@ -60,6 +60,9 @@ var MemoView = React.createClass({
       classString: this.props.classString
     }
   },
+  componentWillReceiveProps: function(nextProps){
+    this.setState({ text: nextProps.text })
+  },
   handleDelete: function(){
     this.props.onDeleteMemo(this.props.id);
   },
@@ -82,8 +85,6 @@ var MemoView = React.createClass({
         type: 'PUT',
         data: { text: text },
         success: function(data){
-          console.log('ajax success')
-          console.log( "text:" + text)
           this.setState({ text: text });
         }.bind(this),
         error: function(xhr, status, err){
@@ -91,10 +92,8 @@ var MemoView = React.createClass({
         }.bind(this)
       });
     }
-    console.log('--------------submit------------')
   },
   render: function(){
-    console.log('from render text is ' + this.state.text );
     return (
       <div className={this.state.classString} >
         <div className="memoText">

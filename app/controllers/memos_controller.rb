@@ -1,12 +1,12 @@
 class MemosController < ApplicationController
-  include Slack
+  # include Slack
 
   skip_before_filter :verify_authenticity_token
   before_filter :verify_slack_token, except: [:index, :update, :destroy]
 
   def index
-    @memos = Memo.all.order(created_at: :desc)
-    render json: @memos
+    memos = Memo.all.order(created_at: :desc)
+    render json: memos
   end
 
   def create
@@ -23,8 +23,8 @@ class MemosController < ApplicationController
   def destroy
     memo = Memo.find(params[:id])
     memo.destroy
-    @memos = Memo.all.order(created_at: :desc)
-    render json: @memos
+    memos = Memo.all.order(created_at: :desc)
+    render json: memos
   end
 
   private
