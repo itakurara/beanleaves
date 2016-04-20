@@ -14,17 +14,28 @@ var MemoBox = React.createClass({
       }.bind(this)
     });
   },
+  deleteMemo: function(memoId){
+    $.ajax({ url: this.props.url + '/' + memoId,
+      type: 'DELETE',
+      dataType: 'json',
+      success: function(data){
+        console.log('ajax delete success')
+        this.setState({ data: data })
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.error(this.props.url, status, err.toString())
+      }.bind(this)
+    });
+  },
   render: function() {
     return (
-      <MemoList url={this.props.url} data={this.state.data} />
+      <MemoList url={this.props.url} data={this.state.data} onDeleteMemo={this.deleteMemo} />
     );
   }
 });
 var MemoList = React.createClass({
-  deleteMemo: function(){
-   // todo
-   // MemoListから該当のMemoviewをremoveする
-   // AjaxでDBから該当のMemoを削除する
+  deleteMemo: function(memoId){
+    this.props.onDeleteMemo(memoId);
   },
   render: function(){
     var colors = ['yellow', 'blue', 'pink', 'green'];
@@ -32,7 +43,7 @@ var MemoList = React.createClass({
       var bgColor = colors[i%4];
       var classString = 'view view--' + bgColor;
       return (
-        <MemoView text={memo.content} url={this.props.url} id={memo.id} classString={classString} />
+        <MemoView text={memo.content} url={this.props.url} id={memo.id} classString={classString} onDeleteMemo={this.deleteMemo} />
         );
     }.bind(this));
     return (
@@ -50,10 +61,10 @@ var MemoView = React.createClass({
     }
   },
   handleDelete: function(){
-    // todo
+    this.props.onDeleteMemo(this.props.id);
   },
   handleEdit: function(){
-    this.setState({classString: this.props.classString + " editing"});
+    this.setState({ classString: this.props.classString + " editing" });
   },
   handleChange: function(e){
     this.setState({ text: e.target.value })
@@ -66,8 +77,7 @@ var MemoView = React.createClass({
     });
     if(!text){ return }
     if(text !== this.props.text){
-      $.ajax({
-        url: this.props.url + '/' + this.props.id,
+      $.ajax({ url: this.props.url + '/' + this.props.id,
         datatype: 'json',
         type: 'PUT',
         data: { text: text },
