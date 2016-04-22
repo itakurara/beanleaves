@@ -5,7 +5,7 @@ class MemosController < ApplicationController
   before_filter :verify_slack_token, except: [:index, :update, :destroy]
 
   def index
-    memos = Memo.all.order(created_at: :desc)
+    memos = Memo.all.order(created_at: :desc).limit(25)
     render json: memos
   end
 
@@ -23,7 +23,7 @@ class MemosController < ApplicationController
   def destroy
     memo = Memo.find(params[:id])
     memo.destroy
-    memos = Memo.all.order(created_at: :desc)
+    memos = Memo.all.order(created_at: :desc).limit(25)
     render json: memos
   end
 
